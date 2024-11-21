@@ -1,4 +1,4 @@
-import { AddOrderForm } from "@/features/orders/AddOrder";
+import { AddOrderForm } from '@/features/orders/AddOrder';
 
 export default function NewOrderPage() {
   return (
@@ -8,5 +8,5 @@ export default function NewOrderPage() {
         <AddOrderForm />
       </div>
     </div>
-  )
+  );
 }

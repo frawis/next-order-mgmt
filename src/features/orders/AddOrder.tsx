@@ -1,12 +1,23 @@
-'use client'
+'use client';
 
-import { useRef } from "react"
-import { insertOrder } from "./actions"
-import { useRouter } from "next/navigation"
+import { useRef } from 'react';
+import { insertOrder } from './actions';
+import { useRouter } from 'next/navigation';
+import {
+  Field,
+  FieldGroup,
+  Fieldset,
+  Label,
+  Legend,
+} from '@/components/ui/fieldset';
+import { Text } from '@/components/ui/text';
+import { Input } from '@/components/ui/input';
+import { Select } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 
 export function AddOrderForm() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const router = useRouter()
+  const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   const onSubmit = async (formData: FormData) => {
     const newOrder = {
@@ -15,44 +26,79 @@ export function AddOrderForm() {
       buyDate: formData.get('buyDate') as string,
       price: formData.get('price') as string,
       state: formData.get('state') as string,
-      orderNumber: formData.get('orderNumber') as string
-    }
+      orderNumber: formData.get('orderNumber') as string,
+    };
 
-
-    await insertOrder({ newOrder: newOrder })
-    formRef.current?.reset()
-    router.push('/bestellungen')
-  }
+    await insertOrder({ newOrder: newOrder });
+    formRef.current?.reset();
+    router.push('/bestellungen');
+  };
 
   return (
     <form ref={formRef} action={onSubmit}>
-      <div>
-        <label htmlFor="productName">Produkt</label>
-        <input type="text" id="productName" name="productName" required placeholder="Welches Produkt..." />
-      </div>
-      <div>
-        <label htmlFor="dealer">Händler</label>
-        <input type="text" id="dealer" name="dealer" required placeholder="Von welchem Händler..." />
-      </div>
-      <div>
-        <label htmlFor="buyDate">Kaufdatum</label>
-        <input type="date" id="buyDate" name="buyDate" required />
-      </div>
-      <div>
-        <label htmlFor="price">Preis</label>
-        <input type="number" id="price" name="price" required placeholder="Preis in Euro..." />
-      </div>
-      <div>
-        <label htmlFor="state">Status</label>
-        <input type="text" id="state" name="state" required placeholder="Status der Bestellung..." />
-      </div>
-      <div>
-        <label htmlFor="orderNumber">Bestellnummer</label>
-        <input type="text" id="orderNumber" name="orderNumber" placeholder="Bestellnummer..." />
-      </div>
-      <div>
-        <button type="submit">Bestellung hinzufügen</button>
-      </div>
+      <Fieldset>
+        <Legend>Neue Bestellung</Legend>
+        <Text>Erstelle eine neue Bestellung</Text>
+        <FieldGroup>
+          <Field>
+            <Label htmlFor="productName">Produkt</Label>
+            <Input
+              type="text"
+              id="productName"
+              name="productName"
+              required
+              placeholder="Welches Produkt..."
+            />
+          </Field>
+          <Field>
+            <Label htmlFor="dealer">Händler</Label>
+            <Input
+              type="text"
+              id="dealer"
+              name="dealer"
+              required
+              placeholder="Von welchem Händler..."
+            />
+          </Field>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
+            <Field>
+              <Label htmlFor="buyDate">Kaufdatum</Label>
+              <Input type="date" id="buyDate" name="buyDate" required />
+            </Field>
+            <Field>
+              <Label htmlFor="price">Preis</Label>
+              <Input
+                type="number"
+                id="price"
+                name="price"
+                required
+                placeholder="Preis in Euro..."
+              />
+            </Field>
+          </div>
+          <Field>
+            <Label htmlFor="state">Status</Label>
+            <Select id="state" name="state" required>
+              <option value="">Status der Bestellung...</option>
+              <option value="ordered">Bestellt</option>
+              <option value="inProgress">In Bearbeitung</option>
+              <option value="delivered">Geliefert</option>
+            </Select>
+          </Field>
+          <Field>
+            <Label htmlFor="orderNumber">Bestellnummer</Label>
+            <Input
+              type="text"
+              id="orderNumber"
+              name="orderNumber"
+              placeholder="Bestellnummer..."
+            />
+          </Field>
+          <div>
+            <Button type="submit">Bestellung hinzufügen</Button>
+          </div>
+        </FieldGroup>
+      </Fieldset>
     </form>
-  )
+  );
 }

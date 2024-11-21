@@ -1,11 +1,11 @@
-'use server'
+'use server';
 
-import { getOrders } from "./actions";
+import { getOrders } from './actions';
 
 export async function OrdersList() {
   const orders = await getOrders();
 
-  if (orders === null){
+  if (orders === null) {
     return <div>Loading...</div>;
   }
 
@@ -23,17 +23,23 @@ export async function OrdersList() {
           </tr>
         </thead>
         <tbody>
-          {orders.length > 0 ? orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.productName}</td>
-              <td>{order.dealer}</td>
-              <td>{order.buyDate}</td>
-              <td>{order.price}</td>
-              <td>{order.state}</td>
+          {orders.length > 0 ? (
+            orders.map((order) => (
+              <tr key={order.id}>
+                <td>{order.productName}</td>
+                <td>{order.dealer}</td>
+                <td>{order.buyDate}</td>
+                <td>{order.price}</td>
+                <td>{order.state}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={5}>Keine Bestellungen vorhanden</td>
             </tr>
-          )) : <tr><td colSpan={5}>Keine Bestellungen vorhanden</td></tr>}
+          )}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

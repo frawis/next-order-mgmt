@@ -1,75 +1,125 @@
-'use client'
+'use client';
 
-import * as Headless from '@headlessui/react'
+import * as Headless from '@headlessui/react';
 
-import { LayoutGroup, motion } from 'framer-motion'
-import React, { Fragment, forwardRef, useId } from 'react'
-import { TouchTarget } from './button'
-import { Link } from './link'
-import { cn } from '@/lib/utils/cn'
+import { LayoutGroup, motion } from 'framer-motion';
+import React, { Fragment, forwardRef, useId } from 'react';
+import { TouchTarget } from './button';
+import { Link } from './link';
+import { cn } from '@/lib/utils/cn';
 
-export function Sidebar({ className, ...props }: React.ComponentPropsWithoutRef<'nav'>) {
-  return <nav {...props} className={cn(className, 'flex h-full min-h-0 flex-col')} />
+export function Sidebar({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'nav'>) {
+  return (
+    <nav {...props} className={cn(className, 'flex h-full min-h-0 flex-col')} />
+  );
 }
 
-export function SidebarHeader({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
+export function SidebarHeader({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...props}
       className={cn(
         className,
-        'flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5'
+        'flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5',
       )}
     />
-  )
+  );
 }
 
-export function SidebarBody({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
+export function SidebarBody({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...props}
       className={cn(
         className,
-        'flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8'
+        'flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8',
       )}
     />
-  )
+  );
 }
 
-export function SidebarFooter({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
+export function SidebarFooter({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       {...props}
       className={cn(
         className,
-        'flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5'
+        'flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5',
       )}
     />
-  )
+  );
 }
 
-export function SidebarSection({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
-  const id = useId()
+export function SidebarSection({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
+  const id = useId();
 
   return (
     <LayoutGroup id={id}>
-      <div {...props} data-slot="section" className={cn(className, 'flex flex-col gap-0.5')} />
+      <div
+        {...props}
+        data-slot="section"
+        className={cn(className, 'flex flex-col gap-0.5')}
+      />
     </LayoutGroup>
-  )
+  );
 }
 
-export function SidebarDivider({ className, ...props }: React.ComponentPropsWithoutRef<'hr'>) {
-  return <hr {...props} className={cn(className, 'my-4 border-t border-zinc-950/5 lg:-mx-4 dark:border-white/5')} />
-}
-
-export function SidebarSpacer({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
-  return <div aria-hidden="true" {...props} className={cn(className, 'mt-8 flex-1')} />
-}
-
-export function SidebarHeading({ className, ...props }: React.ComponentPropsWithoutRef<'h3'>) {
+export function SidebarDivider({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'hr'>) {
   return (
-    <h3 {...props} className={cn(className, 'mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400')} />
-  )
+    <hr
+      {...props}
+      className={cn(
+        className,
+        'my-4 border-t border-zinc-950/5 lg:-mx-4 dark:border-white/5',
+      )}
+    />
+  );
+}
+
+export function SidebarSpacer({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'div'>) {
+  return (
+    <div
+      aria-hidden="true"
+      {...props}
+      className={cn(className, 'mt-8 flex-1')}
+    />
+  );
+}
+
+export function SidebarHeading({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'h3'>) {
+  return (
+    <h3
+      {...props}
+      className={cn(
+        className,
+        'mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400',
+      )}
+    />
+  );
 }
 
 export const SidebarItem = forwardRef(function SidebarItem(
@@ -82,7 +132,7 @@ export const SidebarItem = forwardRef(function SidebarItem(
     | Omit<Headless.ButtonProps, 'as' | 'className'>
     | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
   ),
-  ref: React.ForwardedRef<HTMLAnchorElement | HTMLButtonElement>
+  ref: React.ForwardedRef<HTMLAnchorElement | HTMLButtonElement>,
 ) {
   const classes = cn(
     // Base
@@ -103,8 +153,8 @@ export const SidebarItem = forwardRef(function SidebarItem(
     'dark:text-white dark:data-[slot=icon]:*:fill-zinc-400',
     'dark:data-[hover]:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white',
     'dark:data-[active]:bg-white/5 dark:data-[slot=icon]:*:data-[active]:fill-white',
-    'dark:data-[slot=icon]:*:data-[current]:fill-white'
-  )
+    'dark:data-[slot=icon]:*:data-[current]:fill-white',
+  );
 
   return (
     <span className={cn(className, 'relative')}>
@@ -116,7 +166,11 @@ export const SidebarItem = forwardRef(function SidebarItem(
       )}
       {'href' in props ? (
         <Headless.CloseButton as={Fragment} ref={ref}>
-          <Link className={classes} {...props} data-current={current ? 'true' : undefined}>
+          <Link
+            className={classes}
+            {...props}
+            data-current={current ? 'true' : undefined}
+          >
             <TouchTarget>{children}</TouchTarget>
           </Link>
         </Headless.CloseButton>
@@ -131,9 +185,12 @@ export const SidebarItem = forwardRef(function SidebarItem(
         </Headless.Button>
       )}
     </span>
-  )
-})
+  );
+});
 
-export function SidebarLabel({ className, ...props }: React.ComponentPropsWithoutRef<'span'>) {
-  return <span {...props} className={cn(className, 'truncate')} />
+export function SidebarLabel({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<'span'>) {
+  return <span {...props} className={cn(className, 'truncate')} />;
 }

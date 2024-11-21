@@ -1,15 +1,18 @@
 import { cn } from '@/lib/utils/cn';
-import * as Headless from '@headlessui/react'
+import * as Headless from '@headlessui/react';
 
-import React, { forwardRef } from 'react'
+import React, { forwardRef } from 'react';
 
 export const Textarea = forwardRef(function Textarea(
   {
     className,
     resizable = true,
     ...props
-  }: { className?: string; resizable?: boolean } & Omit<Headless.TextareaProps, 'as' | 'className'>,
-  ref: React.ForwardedRef<HTMLTextAreaElement>
+  }: { className?: string; resizable?: boolean } & Omit<
+    Headless.TextareaProps,
+    'as' | 'className'
+  >,
+  ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
   return (
     <span
@@ -51,5 +54,5 @@ export const Textarea = forwardRef(function Textarea(
         ])}
       />
     </span>
-  )
-})
+  );
+});

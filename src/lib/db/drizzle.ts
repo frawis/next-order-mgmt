@@ -1,10 +1,10 @@
-import { config } from "dotenv";
-import { neon } from "@neondatabase/serverless";
-import { drizzle, NeonHttpDatabase } from "drizzle-orm/neon-http";
-import * as schema from "./schema";
-import { auth } from "@clerk/nextjs/server";
+import { config } from 'dotenv';
+import { neon } from '@neondatabase/serverless';
+import { drizzle, NeonHttpDatabase } from 'drizzle-orm/neon-http';
+import * as schema from './schema';
+import { auth } from '@clerk/nextjs/server';
 
-config({ path: ".env.local" }); // or .env.local
+config({ path: '.env.local' }); // or .env.local
 
 export async function fetchWithDrizzle<T>(
   callback: (
@@ -15,11 +15,11 @@ export async function fetchWithDrizzle<T>(
   const { getToken, userId } = await auth();
   const authToken = await getToken();
   if (!authToken) {
-    throw new Error("No token");
+    throw new Error('No token');
   }
 
   if (!userId) {
-    throw new Error("No userId");
+    throw new Error('No userId');
   }
 
   const db = drizzle(
@@ -27,7 +27,7 @@ export async function fetchWithDrizzle<T>(
       authToken: async () => {
         const token = await getToken();
         if (!token) {
-          throw new Error("No token");
+          throw new Error('No token');
         }
         return token;
       },
