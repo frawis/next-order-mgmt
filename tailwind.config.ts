@@ -21,35 +21,6 @@ export default {
         light: '4px 4px 0px 0px var(--shade-light)',
         dark: '4px 4px 0px 0px var(--shade-dark)',
       },
-      colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
-        primary: {
-          light: 'var(--primary-light)',
-          DEFAULT: 'var(--primary)',
-          dark: 'var(--primary-dark)',
-        },
-        success: {
-          light: 'var(--success-light)',
-          DEFAULT: 'var(--success)',
-          dark: 'var(--success-dark)',
-        },
-        warning: {
-          light: 'var(--warning-light)',
-          DEFAULT: 'var(--warning)',
-          dark: 'var(--warning-dark)',
-        },
-        shade: {
-          light: 'var(--shade-light)',
-          DEFAULT: 'var(--shade)',
-          dark: 'var(--shade-dark)',
-        },
-        error: {
-          light: 'var(--error-light)',
-          DEFAULT: 'var(--error)',
-          dark: 'var(--error-dark)',
-        },
-      },
       fontFamily: {
         sans: ['var(--font-geist-sans)', ...fontFamily.sans],
         mono: ['var(--font-geist-mono)', ...fontFamily.mono],
