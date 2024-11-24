@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import localFont from 'next/font/local';
 import './globals.css';
+import { ThemeProvider } from '@/components/layout/theme-provider';
+import { TailwindIndicator } from '@/components/layout/tailwind-indicator';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -29,11 +31,20 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="de">
+      <html lang="de" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
         >
-          {children}
+          <ThemeProvider
+            attribute="class"
+            disableTransitionOnChange
+            enableSystem
+            defaultTheme="system"
+            enableColorScheme
+          >
+            {children}
+            <TailwindIndicator />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
