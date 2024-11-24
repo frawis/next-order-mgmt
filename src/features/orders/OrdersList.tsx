@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/table';
 import { getOrders } from './actions';
 import { formatCurrency, formatDate } from '@/lib/utils/helpers';
-import { Badge } from '@/components/ui/badge';
+// import { Badge } from '@/components/ui/badge';
 
 export async function OrdersList() {
   const orders = await getOrders();

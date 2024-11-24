@@ -56,7 +56,7 @@ export function HeroOld() {
           <div className="mt-24 sm:mt-32 lg:mt-16">
             <a href="#" className="inline-flex space-x-6">
               <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm/6 font-semibold text-primary ring-1 ring-inset ring-indigo-500/20">
-                What's new
+                Whats new
               </span>
               <span className="inline-flex items-center space-x-2 text-sm/6 font-medium text-gray-300">
                 <span>Just shipped v1.0</span>

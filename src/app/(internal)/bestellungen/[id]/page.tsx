@@ -4,9 +4,10 @@ import { Metadata } from 'next';
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const order = await getSingleOrder({ id: params.id });
+  const { id } = await params;
+  const order = await getSingleOrder({ id: id });
 
   return {
     title: order && `Bestellung #${order[0].id.toString()}`,
