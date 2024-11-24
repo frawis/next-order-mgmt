@@ -5,18 +5,18 @@ export function BentoGrid() {
         <h2 className="text-center text-base/7 font-semibold text-primary">
           Einfach organisiert
         </h2>
-        <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+        <p className="mx-auto mt-2 max-w-3xl text-balance text-center text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           Alles im Blick – Deine Schaltzentrale für Bestellungen und Verkäufe
         </p>
         <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
           <div className="relative lg:row-span-2">
-            <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
+            <div className="absolute inset-px rounded-lg bg-background-card lg:rounded-l-[2rem]"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
               <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                <p className="mt-2 text-lg font-medium tracking-tight text-foreground max-lg:text-center">
                   Nie wieder den Überblick verlieren
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <p className="mt-2 max-w-lg text-sm/6 text-foreground/60 max-lg:text-center">
                   Alle Deine Bestellungen, Verkäufe und Versandinfos – jederzeit
                   griffbereit.
                 </p>
@@ -34,13 +34,13 @@ export function BentoGrid() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
           </div>
           <div className="relative max-lg:row-start-1">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"></div>
+            <div className="absolute inset-px rounded-lg bg-background-card max-lg:rounded-t-[2rem]"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                <p className="mt-2 text-lg font-medium tracking-tight text-foreground max-lg:text-center">
                   Dein persönlicher Assistent
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <p className="mt-2 max-w-lg text-sm/6 text-foreground/60 max-lg:text-center">
                   Verwalte Käuferinformationen und versende Pakete stressfrei.
                   Alles läuft wie am Schnürchen.
                 </p>
@@ -56,13 +56,13 @@ export function BentoGrid() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"></div>
           </div>
           <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-            <div className="absolute inset-px rounded-lg bg-white"></div>
+            <div className="absolute inset-px rounded-lg bg-background-card"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
               <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                <p className="mt-2 text-lg font-medium tracking-tight text-foreground max-lg:text-center">
                   Erkenne Trends und Muster
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <p className="mt-2 max-w-lg text-sm/6 text-foreground/60 max-lg:text-center">
                   Wohin geht Dein Geld? Wo machst Du Gewinn? Unsere Analysen
                   wissen die Antwort.
                 </p>
@@ -78,13 +78,13 @@ export function BentoGrid() {
             <div className="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
           </div>
           <div className="relative lg:row-span-2">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
+            <div className="absolute inset-px rounded-lg bg-background-card max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
               <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
+                <p className="mt-2 text-lg font-medium tracking-tight text-foreground max-lg:text-center">
                   Flexibel und für Dich gemacht
                 </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+                <p className="mt-2 max-w-lg text-sm/6 text-foreground/60 max-lg:text-center">
                   Ob Hobby oder Geschäft – passe die Plattform an Deine
                   Bedürfnisse an.
                 </p>

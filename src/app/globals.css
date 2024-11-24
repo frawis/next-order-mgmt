@@ -1,49 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(0, 0%, 10%);
-  --primary: hsl(218, 79%, 55%);
-  --primary-light: hsl(218, 79%, 66%);
-  --primary-dark: hsl(218, 79%, 40%);
-  --success: hsl(134, 61%, 41%);
-  --success-light: hsl(134, 70%, 80%);
-  --success-dark: hsl(134, 61%, 25%);
-  --warning: hsl(36, 94%, 48%);
-  --warning-light: hsl(36, 94%, 75%);
-  --warning-dark: hsl(36, 94%, 35%);
-  --shade: hsl(0, 0%, 90%);
-  --shade-light: hsl(0, 0%, 95%);
-  --shade-dark: hsl(0, 0%, 25%);
-  --error: hsl(0, 78%, 53%);
-  --error-light: hsl(0, 78%, 75%);
-  --error-dark: hsl(0, 78%, 35%);
+@source './**/*.{js,ts,jsx,tsx,mdx}';
+
+@variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular,
+    Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --color-primary: light-dark(var(--color-blue-500), var(--color-blue-600));
+  --color-success: light-dark(
+    var(--color-emerald-500),
+    var(--color-emerald-600)
+  );
+  --color-warning: light-dark(var(--color-orange-500), var(--color-orange-600));
+  --color-error: light-dark(var(--color-red-500), var(--color-red-600));
+
+  --color-background: light-dark(var(--color-white), var(--color-slate-900));
+  --color-foreground: light-dark(var(--color-slate-900), var(--color-white));
+  --color-background-card: light-dark(
+    var(--color-gray-50),
+    var(--color-slate-800)
+  );
+
+  --color-background-footer: light-dark(
+    var(--color-gray-100),
+    var(--color-slate-950)
+  );
+  --color-foreground-footer: light-dark(
+    var(--color-slate-900),
+    var(--color-slate-300)
+  );
+
+  --translate-box-shadow-x: 4px;
+  --translate-box-shadow-y: 4px;
+  --translate-reverse-box-shadow-x: -4px;
+  --translate-reverse-box-shadow-y: -4px;
 }
 
-.dark {
-  --background: hsl(218, 28%, 10%);
-  --foreground: hsl(0, 0%, 93%);
-  --shade: hsl(218, 22%, 30%);
-  --shade-light: hsl(218, 22%, 40%);
-  --shade-dark: hsl(0, 0%, 97%);
-  --primary: hsl(218, 79%, 66%);
-  --primary-light: hsl(218, 79%, 77%);
-  --primary-dark: hsl(218, 79%, 55%);
-  --success: hsl(134, 61%, 41%);
-  --success-light: hsl(134, 70%, 65%);
-  --success-dark: hsl(134, 61%, 30%);
-  --warning: hsl(36, 94%, 50%);
-  --warning-light: hsl(36, 94%, 70%);
-  --warning-dark: hsl(36, 94%, 45%);
-  --error: hsl(0, 78%, 53%);
-  --error-light: hsl(0, 78%, 65%);
-  --error-dark: hsl(0, 78%, 40%);
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  border: var(--shade);
+@layer base {
+  body {
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+  }
 }
