@@ -9,4 +9,13 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "conventionalCommits.scopes": [
+    "ui",
+    "db",
+    "api",
+    "auth",
+    "config",
+    "utils",
+    "test",
+  ],
 }
