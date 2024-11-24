@@ -1,5 +1,5 @@
-import { type InferInsertModel, type InferSelectModel, sql } from 'drizzle-orm';
-
+import { InferInsertModel, InferSelectModel, sql } from 'drizzle-orm';
+import { authenticatedRole, authUid, crudPolicy } from 'drizzle-orm/neon';
 import {
   bigint,
   date,
@@ -10,24 +10,21 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core';
-import { authenticatedRole, authUid, crudPolicy } from 'drizzle-orm/neon';
 import { platforms } from './platforms';
 
-export const userOrdersStateEnum = pgEnum('user_orders_state', [
+export const shippingStatusEnum = pgEnum('shipping_status', [
   'pending',
-  'processing',
+  'ready_to_ship',
   'shipped',
+  'in_transit',
   'out_for_delivery',
   'delivered',
-  'cancelled',
-  'returned',
   'failed_delivery',
-  'awaiting_payment',
-  'refunded',
+  'returned',
 ]);
 
-export const userOrders = pgTable(
-  'user_orders',
+export const userSales = pgTable(
+  'user_sales',
   {
     id: bigint('id', { mode: 'bigint' })
       .primaryKey()
@@ -36,21 +33,21 @@ export const userOrders = pgTable(
       .notNull()
       .default(sql`(auth.user_id())`),
     productName: text('product_name').notNull(),
-    dealer: bigint('dealer', { mode: 'bigint' })
+    platform: bigint('platform', { mode: 'bigint' })
       .notNull()
       .references(() => platforms.id),
-    buyDate: date('buy_date').notNull(),
+    saleDate: date('sale_date').notNull(),
     price: decimal('price', { precision: 10, scale: 2 }).notNull(),
-    state: userOrdersStateEnum('state').notNull().default('pending'),
-    orderNumber: varchar('order_number', { length: 255 }),
+    shippingStatus: shippingStatusEnum('shipping_status').notNull(),
+    buyerInfo: text('buyer_info'),
+    trackingNumber: varchar('tracking_number', { length: 255 }),
     insertedAt: timestamp('inserted_at', { withTimezone: true })
       .defaultNow()
       .notNull(),
     updatedAt: timestamp('updated_at', { withTimezone: true })
       .defaultNow()
       .notNull(),
-  },
-  // create policies for the table
+  }, // create policies for the table
   (table) => [
     crudPolicy({
       role: authenticatedRole,
@@ -60,7 +57,7 @@ export const userOrders = pgTable(
   ],
 );
 
-export type UserOrder = InferSelectModel<typeof userOrders>;
-export type NewUserOrder = InferInsertModel<typeof userOrders>;
-export type OrderStatus = (typeof userOrdersStateEnum)['enumValues'][number];
-export const orderStatusValues = userOrdersStateEnum.enumValues;
+export type UserSale = InferSelectModel<typeof userSales>;
+export type NewUserSale = InferInsertModel<typeof userSales>;
+export type ShippingStatus = (typeof shippingStatusEnum)['enumValues'][number];
+export const shippingStatusValues = shippingStatusEnum.enumValues;
