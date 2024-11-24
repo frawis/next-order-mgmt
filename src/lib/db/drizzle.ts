@@ -1,10 +1,10 @@
-import { config } from 'dotenv';
+// import { config } from 'dotenv';
 import { neon } from '@neondatabase/serverless';
 import { drizzle, NeonHttpDatabase } from 'drizzle-orm/neon-http';
 import * as schema from './schema';
 import { auth } from '@clerk/nextjs/server';
 
-config({ path: '.env.local' }); // or .env.local
+// config({ path: '.env.local' }); // or .env.local
 
 export async function fetchWithDrizzle<T>(
   callback: (

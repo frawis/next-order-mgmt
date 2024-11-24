@@ -1,4 +1,4 @@
-import { SignedIn, SignOutButton } from '@clerk/nextjs';
+import { SignOutButton } from '@clerk/nextjs';
 import {
   Navbar,
   NavbarDivider,
@@ -34,11 +34,11 @@ export const InternalNavbar = () => {
             <UserCircle weight="duotone" size={28} />
           </DropdownButton>
           <DropdownMenu className="min-w-64" anchor="bottom end">
-            <SignedIn>
-              <DropdownItem as={'div'}>
-                <SignOutButton />
-              </DropdownItem>
-            </SignedIn>
+            <DropdownItem href="/einstellungen">Einstellungen</DropdownItem>
+
+            <SignOutButton>
+              <DropdownItem as={'div'}>Abmelden</DropdownItem>
+            </SignOutButton>
           </DropdownMenu>
         </Dropdown>
       </NavbarSection>

@@ -7,7 +7,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function getOrders(): Promise<Array<UserOrder>> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return fetchWithDrizzle(async (db, { userId }) => {
+  return fetchWithDrizzle(async (db) => {
     return db
       .select()
       .from(userOrders)

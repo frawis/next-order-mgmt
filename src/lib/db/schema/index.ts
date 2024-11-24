@@ -1,5 +1,5 @@
 export {
-  reveivePeriodeValues,
+  receivePeriodeValues,
   reveivePeriodeEnum,
   userProfiles,
   type ReveivePeriode,

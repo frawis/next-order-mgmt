@@ -39,10 +39,10 @@ export async function OrdersList() {
               title={`Bestellung #${order.id}`}
             >
               <TableCell>{order.productName}</TableCell>
-              <TableCell>{order.dealer}</TableCell>
+              <TableCell></TableCell>
               <TableCell>{formatDate(order.buyDate)}</TableCell>
               <TableCell>
-                <Badge color="emerald">{order.state}</Badge>
+                {/* <Badge color="emerald">{order.state}</Badge> */}
               </TableCell>
               <TableCell className="text-right">
                 {formatCurrency(order.price)}

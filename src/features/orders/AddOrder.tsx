@@ -14,6 +14,7 @@ import { Text } from '@/components/ui/text';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import { OrderStatus } from '@/lib/db/schema';
 
 export function AddOrderForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -22,10 +23,10 @@ export function AddOrderForm() {
   const onSubmit = async (formData: FormData) => {
     const newOrder = {
       productName: formData.get('productName') as string,
-      dealer: formData.get('dealer') as string,
+      dealer: BigInt(formData.get('dealer') as string),
       buyDate: formData.get('buyDate') as string,
       price: formData.get('price') as string,
-      state: formData.get('state') as string,
+      state: formData.get('state') as OrderStatus,
       orderNumber: formData.get('orderNumber') as string,
     };
 

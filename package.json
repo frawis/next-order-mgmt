@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:normal": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,7 +15,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.4.1",
+    "@clerk/nextjs": "^6.5.0",
     "@headlessui/react": "^2.2.0",
     "@neondatabase/serverless": "^0.10.3",
     "@phosphor-icons/react": "^2.1.7",
@@ -22,7 +23,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
-    "drizzle-orm": "^0.36.3",
+    "drizzle-orm": "^0.36.4",
     "framer-motion": "^11.11.17",
     "next": "15.0.3",
     "next-cloudinary": "^6.16.0",
@@ -34,7 +35,7 @@
     "vaul": "^1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^20.17.6",
+    "@types/node": "^20.17.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "dotenv": "^16.4.5",
@@ -46,5 +47,17 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.15",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowAny": [
+        "react",
+        "react-dom"
+      ]
+    },
+    "overrides": {
+      "@types/react": "npm:types-react@rc",
+      "@types/react-dom": "npm:types-react-dom@rc"
+    }
   }
 }

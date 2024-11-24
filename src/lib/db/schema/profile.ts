@@ -28,4 +28,4 @@ export const userProfiles = pgTable('user_profiles', {
 export type UserProfiles = InferSelectModel<typeof userProfiles>;
 export type NewUserProfile = InferInsertModel<typeof userProfiles>;
 export type ReveivePeriode = (typeof reveivePeriodeEnum)['enumValues'][number];
-export const reveivePeriodeValues = reveivePeriodeEnum.enumValues;
+export const receivePeriodeValues = reveivePeriodeEnum.enumValues;

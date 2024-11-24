@@ -27,13 +27,21 @@ export default function PublicPageLayout({
                 <Link href="/dashboard">Dashboard</Link>
               </SignedIn>
               <SignedOut>
-                <SignInButton />
+                <SignInButton>
+                  <button>Jetzt ausprobieren</button>
+                </SignInButton>
               </SignedOut>
             </div>
           </div>
         </div>
       </header>
       {children}
+      <footer>
+        <div>
+          <Link href="/impressum">Impressum</Link>
+          <Link href="/datenschutz">Datenschutz</Link>
+        </div>
+      </footer>
     </>
   );
 }
