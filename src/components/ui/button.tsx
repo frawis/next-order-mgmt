@@ -155,6 +155,10 @@ const styles = {
       'text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.rose.500)] [--btn-border:theme(colors.rose.600/90%)]',
       '[--btn-icon:theme(colors.rose.300)] data-[active]:[--btn-icon:theme(colors.rose.200)] data-[hover]:[--btn-icon:theme(colors.rose.200)]',
     ],
+    primary: [
+      'text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.primary.DEFAULT)] [--btn-border:theme(colors.primary.dark/90%)]',
+      '[--btn-icon:theme(colors.primary.light)] data-[active]:[--btn-icon:theme(colors.primary.dark)] data-[hover]:[--btn-icon:theme(colors.primary.dark)]',
+    ],
   },
 };
 
@@ -178,7 +182,7 @@ export const Button = forwardRef(function Button(
       ? styles.outline
       : plain
         ? styles.plain
-        : cn(styles.solid, styles.colors[color ?? 'dark/zinc']),
+        : cn(styles.solid, styles.colors[color ?? 'primary']),
   );
 
   return 'href' in props ? (

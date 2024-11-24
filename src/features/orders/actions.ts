@@ -30,3 +30,35 @@ export async function insertOrder({ newOrder }: { newOrder: NewUserOrder }) {
 
   revalidatePath('/bestellungen');
 }
+
+export async function updateOrder({ order }: { order: UserOrder }) {
+  await fetchWithDrizzle(async (db) => {
+    return db
+      .update(userOrders)
+      .set({
+        state: order.state,
+      })
+      .where(eq(userOrders.id, order.id));
+  });
+
+  revalidatePath('/bestellungen');
+}
+
+export async function deleteOrder({ id }: { id: string }) {
+  await fetchWithDrizzle(async (db) => {
+    return db.delete(userOrders).where(eq(userOrders.id, BigInt(id)));
+  });
+
+  revalidatePath('/bestellungen');
+}
+
+export async function getSingleOrder({ id }: { id: string }) {
+  return fetchWithDrizzle(async (db) => {
+    const result = db
+      .select()
+      .from(userOrders)
+      .where(eq(userOrders.id, BigInt(id)))
+      .limit(1);
+    return result;
+  });
+}

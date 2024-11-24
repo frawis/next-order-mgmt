@@ -1,22 +1,11 @@
-import { SignedIn, SignOutButton } from '@clerk/nextjs';
-import Link from 'next/link';
+import { InternalLayout } from '@/components/layout/internal-layout';
 
-export default function InternalLayout({
+export default function InternalPageLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <header>
-        <SignedIn>
-          <div className="flex justify-between items-center">
-            <Link href="/bestellungen">Lieferblick</Link>
-            <div>
-              <SignOutButton />
-            </div>
-          </div>
-        </SignedIn>
-      </header>
-      {children}
+      <InternalLayout>{children}</InternalLayout>
     </>
   );
 }

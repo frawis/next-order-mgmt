@@ -1,6 +1,16 @@
 'use server';
 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 import { getOrders } from './actions';
+import { formatCurrency, formatDate } from '@/lib/utils/helpers';
+import { Badge } from '@/components/ui/badge';
 
 export async function OrdersList() {
   const orders = await getOrders();
@@ -10,36 +20,41 @@ export async function OrdersList() {
   }
 
   return (
-    <div>
-      <h2>Bestellungen</h2>
-      <table>
-        <thead>
+    <Table className="mt-8 [--gutter:theme(spacing.6)] lg:[--gutter:theme(spacing.10)]">
+      <TableHead>
+        <TableRow>
+          <TableHeader>Produkt</TableHeader>
+          <TableHeader>Händler</TableHeader>
+          <TableHeader>Kaufdatum</TableHeader>
+          <TableHeader>Status</TableHeader>
+          <TableHeader className="text-right">Preis</TableHeader>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {orders.length > 0 ? (
+          orders.map((order) => (
+            <TableRow
+              key={order.id}
+              href={`/bestellungen/${order.id}`}
+              title={`Bestellung #${order.id}`}
+            >
+              <TableCell>{order.productName}</TableCell>
+              <TableCell>{order.dealer}</TableCell>
+              <TableCell>{formatDate(order.buyDate)}</TableCell>
+              <TableCell>
+                <Badge color="emerald">{order.state}</Badge>
+              </TableCell>
+              <TableCell className="text-right">
+                {formatCurrency(order.price)}
+              </TableCell>
+            </TableRow>
+          ))
+        ) : (
           <tr>
-            <th>Produkt</th>
-            <th>Händler</th>
-            <th>Kaufdatum</th>
-            <th>Preis</th>
-            <th>Status</th>
+            <td colSpan={5}>Keine Bestellungen vorhanden</td>
           </tr>
-        </thead>
-        <tbody>
-          {orders.length > 0 ? (
-            orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.productName}</td>
-                <td>{order.dealer}</td>
-                <td>{order.buyDate}</td>
-                <td>{order.price}</td>
-                <td>{order.state}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={5}>Keine Bestellungen vorhanden</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+        )}
+      </TableBody>
+    </Table>
   );
 }
